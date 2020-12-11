@@ -57,22 +57,102 @@ ArrayList<Usuario> autors=new ArrayList<>();
 
     @Override
     public Usuario buscarusuario(int idusuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" select ' "+" from usuario "+" where idusuario = "+idusuario;
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                e.setIdusuario(rs.getInt("idusuario"));
+                e.setNombre(rs.getString("nombre"));
+                e.setApellido(rs.getString("apellido"));
+                e.setDni(rs.getString("dni"));
+              
+                e.setEstado(rs.getString("estado"));
+                              
+            }
+            
+        } catch (Exception e) {
+             System.out.println("Error: problemas con el listar");
+            System.out.println(e.getMessage());
+        }
+        
+        return  e;    }
 
     @Override
     public boolean agregarusuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" insert into "+" usuario (nombre, apellido, dni,estado) "  
+                          +" values('"+usuario.getNombre() +"', "
+                          +" '"+usuario.getApellido()+"', "  
+                          +" '"+usuario.getDni()+"', "
+                          
+                          +" '"+usuario.getEstado()+"')"
+         
+         ;
+         
+         
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el INSET");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean editarusuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" update estudiante "
+                          +" set "
+                          +" nombre = '"+usuario.getNombre() +"', "
+                          +" apellido = '"+usuario.getApellido()+"', "
+                          
+                          +" dni = '"+usuario.getDni()+"', "
+                          
+                          +" estado = '"+usuario.getEstado()+"' "
+                          +" where "
+                          +" idusuario ="+usuario.getIdusuario()
+                   
+                   ;
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas en la EDICION");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean eliminarusuario(int idusuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" delete from usuario "+" where "+" idusuario = "+idusuario;
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el error");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
     
 }

@@ -58,22 +58,101 @@ ArrayList<Editorial> edi=new ArrayList<>();
 
     @Override
     public Editorial buscareditorial(int ideditorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" select ' "+" from editorial "+" where ideditorial = "+ideditorial;  
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                e.setIdeditorial(rs.getInt("ideditorial"));
+                e.setNombre(rs.getString("nombre"));
+                e.setCodigo(rs.getString("codigo"));
+                e.setDireccion(rs.getString("direccion"));
+                e.setUrl(rs.getString("url"));
+                e.setEstado(rs.getString("estado"));
+                              
+            }
+            
+        } catch (Exception e) {
+             System.out.println("Error: problemas con el listar");
+            System.out.println(e.getMessage());
+        }
+        
+        return  e;    }
 
     @Override
     public boolean agregareditorial(Editorial editorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" insert into "+" editorial (nombre,codigo ,direccion ,url ,estado) "  
+                          +" values('"+editorial.getNombre() +"', "
+                          +" '"+editorial.getCodigo()+"', "  
+                          +" '"+editorial.getDireccion()+"', "
+                          +" '"+editorial.getUrl()+"', "
+                          +" '"+editorial.getEstado()+"')"
+         
+         ;
+         
+         
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el INSET");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean editareditorial(Editorial editorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" update editorial "
+                          +" set "
+                          +" nombre = '"+editorial.getNombre() +"', "
+                          +" codigo = '"+editorial.getCodigo()+"', "
+                          +" direccion = '"+editorial.getDireccion()+"', "
+                          +" url = '"+editorial.getUrl()+"', "
+                          +" estado = '"+editorial.getEstado()+"' "
+                          +" where "
+                          +" ideditorial ="+editorial.getIdeditorial()
+                   
+                   ;
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas en la EDICION");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean eliminareditorial(int ideditorial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" delete from editorial "+" where "+" ideditorial = "+ideditorial;
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el error");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;      }
     
 }

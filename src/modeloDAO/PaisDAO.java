@@ -55,22 +55,95 @@ ArrayList<Pais> autors=new ArrayList<>();
 
     @Override
     public Pais buscarpais(int idpais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" select ' "+" from pais "+" where idpais = "+idpais; 
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                e.setIdpais(rs.getInt("idpais"));
+                e.setNombre(rs.getString("nombre"));           
+                e.setEstado(rs.getString("estado"));
+                              
+            }
+            
+        } catch (Exception e) {
+             System.out.println("Error: problemas con el listar");
+            System.out.println(e.getMessage());
+        }
+        
+        return  e;    }
 
     @Override
     public boolean agregarpais(Pais pais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" insert into "+" pais (nombre,estado) "  
+                          +" values('"+pais.getNombre() +"', "
+                         
+                         
+                          +" '"+pais.getEstado()+"')"
+         
+         ;
+         
+         
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el INSET");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean editarpais(Pais pais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" update pais "
+                          +" set "
+                          +" nombre = '"+pais.getNombre() +"', "
+                        
+                          +" estado = '"+pais.getEstado()+"' "
+                          +" where "
+                          +" idpais ="+pais.getIdpais()
+                   
+                   ;
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas en la EDICION");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean eliminarpais(int idpais) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" delete from pais "+" where "+" idpais = "+idpais; 
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el error");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
     
 }

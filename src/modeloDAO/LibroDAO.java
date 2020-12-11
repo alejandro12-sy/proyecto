@@ -63,22 +63,122 @@ ArrayList<Libro> autors=new ArrayList<>();
 
     @Override
     public Libro buscarlibro(int idlibro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" select ' "+" from libro "+" where idlibro = "+idlibro;  
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                e.setIdlibro(rs.getInt("idlibro"));
+                e.setTitulo(rs.getString("titulo"));
+                e.setIsbn(rs.getString("isbn"));
+                e.setPaginas(rs.getString("paginas"));
+                
+                e.setAño(rs.getString("años"));
+                e.setStock(rs.getString("stock"));
+                e.setStock_disponibles(rs.getString("stock_disponibles"));
+                e.setIdautor(rs.getInt("idautor"));
+                e.setIdpais(rs.getInt("idpais"));
+                e.setIdeditorial(rs.getInt("ideditorial"));
+                              
+            }
+            
+        } catch (Exception e) {
+             System.out.println("Error: problemas con el listar");
+            System.out.println(e.getMessage());
+        }
+        
+        return  e;    }
 
     @Override
     public boolean agregarlibro(Libro libro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" insert into "+" libro (titulo, isbn, paginas, año,stock,stock_disponible,idautor,idpais,ideditorial) "  
+                          +" values('"+libro.getTitulo() +"', "
+                          +" '"+libro.getIsbn()+"', "  
+                          +" '"+libro.getPaginas()+"', "
+                          +" '"+libro.getAño()+"', "
+                            +" '"+libro.getStock()+"', "  
+                          +" '"+libro.getStock_disponibles()+"', "
+                          +" '"+libro.getIdautor()+"', "
+                           +" '"+libro.getIdpais()+"', "
+        
+        
+        
+                          +" '"+libro.getIdeditorial()+"')"
+        
+        
+         
+         ;
+         
+         
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el INSET");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean editarlibro(Libro libro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" update libro "
+                          +" set "
+                          +" titulo = '"+libro.getTitulo() +"', "
+                          +" isbn = '"+libro.getIsbn()+"', "
+                          +" paginas = '"+libro.getPaginas()+"', "
+                          +" año = '"+libro.getAño()+"', "
+                          +" stock= '"+libro.getStock()+"' ,"
+                            +"stock_disponibles = '"+libro.getStock_disponibles()+"' ,"
+                              +"idautor = '"+libro.getIdautor()+"' ,"
+                              +"idpais = '"+libro.getIdpais()+"' ,"
+                           +" ideditorial= '"+libro.getIdeditorial()+"' "
+         
+         
+         
+                          +" where "
+                          +" idlibro ="+libro.getIdlibro()
+                   
+                   ;
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas en la EDICION");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean eliminarlibro(int idlibro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" delete from libro "+" where "+" idlibro = "+idlibro;
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el error");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;      }
     
 }

@@ -55,23 +55,96 @@ ArrayList<Autor> autors=new ArrayList<>();
 
     @Override
     public Autor buscarautor(int idautor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" select ' "+" from autor "+" where idautor = "+idautor;  
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                e.setIdautor(rs.getInt("idautor"));
+                e.setNombre(rs.getString("nombre"));
+                e.setApellido(rs.getString("apellido"));
+                              
+            }
+            
+        } catch (Exception e) {
+             System.out.println("Error: problemas con el listar");
+            System.out.println(e.getMessage());
+        }
+        
+        return  e;    }
 
     @Override
     public boolean agregarautor(Autor autor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" insert into "+" autor (nombre, apellido) "  
+                          +" values('"+autor.getNombre() +"', "
+                        
+                          +" '"+autor.getNombre()+"')"
+         
+         ;
+         
+         
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el INSET");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean editarautor(Autor autor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ String consulta=" update autor "
+                          +" set "
+                          +" nombre = '"+autor.getNombre() +"', "
+                        
+                       
+                          +" apellido = '"+autor.getApellido()+"' "
+                          +" where "
+                          +" idautor ="+autor.getIdautor()
+                   
+                   ;
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas en la EDICION");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;    }
 
     @Override
     public boolean eliminarautor(int idautor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+String consulta=" delete from autor "+" where "+" idautor = "+idautor;
+                          
+                           
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+            
+            
+        } catch (Exception error) {
+             System.out.println("Error: problemas con el error");
+            System.out.println(error.getMessage());
+            return false;
+        }
+        
+        return  true;      }
     
     
 }
