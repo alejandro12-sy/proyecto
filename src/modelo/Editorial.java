@@ -21,6 +21,15 @@ public class Editorial {
     public Editorial() {
     }
 
+    public Editorial( String nombre, String codigo, String direccion, String url, String estado) {
+        
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.direccion = direccion;
+        this.url = url;
+        this.estado = estado;
+    }
+
     public Editorial(int ideditorial, String nombre, String codigo, String direccion, String url, String estado) {
         this.ideditorial = ideditorial;
         this.nombre = nombre;
@@ -29,7 +38,7 @@ public class Editorial {
         this.url = url;
         this.estado = estado;
     }
-
+    
       
       
       

@@ -17,6 +17,12 @@ public class Autor {
     public Autor() {
     }
 
+    public Autor( String nombre, String apellido) {
+        
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public Autor(int idautor, String nombre, String apellido) {
         this.idautor = idautor;
         this.nombre = nombre;

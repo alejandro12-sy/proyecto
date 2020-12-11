@@ -94,7 +94,7 @@ String consulta=" select ' "+" from libro "+" where idlibro = "+idlibro;
 
     @Override
     public boolean agregarlibro(Libro libro) {
-String consulta=" insert into "+" libro (titulo, isbn, paginas, año,stock,stock_disponible,idautor,idpais,ideditorial) "  
+String consulta=" insert into "+" libro (titulo, isbn, paginas, año,stock,stock_disponibles,idautor,idpais,ideditorial) "  
                           +" values('"+libro.getTitulo() +"', "
                           +" '"+libro.getIsbn()+"', "  
                           +" '"+libro.getPaginas()+"', "

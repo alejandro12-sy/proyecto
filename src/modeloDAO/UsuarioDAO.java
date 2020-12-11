@@ -109,7 +109,7 @@ String consulta=" insert into "+" usuario (nombre, apellido, dni,estado) "
 
     @Override
     public boolean editarusuario(Usuario usuario) {
- String consulta=" update estudiante "
+ String consulta=" update usuario "
                           +" set "
                           +" nombre = '"+usuario.getNombre() +"', "
                           +" apellido = '"+usuario.getApellido()+"', "

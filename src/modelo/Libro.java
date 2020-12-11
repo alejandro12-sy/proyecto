@@ -24,6 +24,19 @@ public class Libro {
     public Libro() {
     }
 
+    public Libro( String titulo, String isbn, String paginas, String año, String stock, String stock_disponibles, int idautor, int idpais, int ideditorial) {
+        
+        this.titulo = titulo;
+        this.isbn = isbn;
+        this.paginas = paginas;
+        this.año = año;
+        this.stock = stock;
+        this.stock_disponibles = stock_disponibles;
+        this.idautor = idautor;
+        this.idpais = idpais;
+        this.ideditorial = ideditorial;
+    }
+
     public Libro(int idlibro, String titulo, String isbn, String paginas, String año, String stock, String stock_disponibles, int idautor, int idpais, int ideditorial) {
         this.idlibro = idlibro;
         this.titulo = titulo;

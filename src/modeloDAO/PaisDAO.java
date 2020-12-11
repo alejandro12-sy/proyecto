@@ -85,6 +85,7 @@ String consulta=" insert into "+" pais (nombre,estado) "
                           +" '"+pais.getEstado()+"')"
          
          ;
+
          
          
         try {

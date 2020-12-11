@@ -81,10 +81,16 @@ String consulta=" select ' "+" from autor "+" where idautor = "+idautor;
 String consulta=" insert into "+" autor (nombre, apellido) "  
                           +" values('"+autor.getNombre() +"', "
                         
-                          +" '"+autor.getNombre()+"')"
+                          +" '"+autor.getApellido()+"')"
          
          ;
-         
+//         String consulta=" insert into "+" pais (nombre,estado) "  
+//                          +" values('"+pais.getNombre() +"', "
+//                         
+//                         
+//                          +" '"+pais.getEstado()+"')"
+//         
+//         ;
          
         try {
             con = cn.getConnection();

@@ -19,6 +19,14 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario( String nombre, String apellido, String dni, String estado) {
+        
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.estado = estado;
+    }
+
     public Usuario(int idusuario, String nombre, String apellido, String dni, String estado) {
         this.idusuario = idusuario;
         this.nombre = nombre;
