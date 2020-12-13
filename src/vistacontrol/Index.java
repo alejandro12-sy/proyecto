@@ -76,7 +76,7 @@ public class Index {
     public static void listarpais() {
         PaisDAO p = new PaisDAO();
         List<Pais> a = p.listarpais();
-        System.out.println("");
+        System.out.println("Listado de Pais");
         for (Pais s : a) {
             System.out.println(s.getIdpais() + "\t"
                     + s.getNombre() + "\t"
@@ -89,7 +89,7 @@ public class Index {
     public static void listarusuario() {
         UsuarioDAO u = new UsuarioDAO();
         List<Usuario> s = u.listarusuario();
-        System.out.println("");
+        System.out.println("Listado de Usuario");
         for (Usuario o : s) {
             System.out.println(o.getIdusuario() + "\t"
                     + o.getNombre() + "\t"
@@ -102,7 +102,7 @@ public class Index {
 
     public static void eliminarautor() {
         listarautor();
-        System.out.print("Ingrese el ID del Estudiante a Eliminar: ");
+        System.out.print("Ingrese el ID del autor a Eliminar: ");
         int id = leer.entero();
         AutorDAO a = new AutorDAO();
         a.eliminarautor(id);
@@ -110,7 +110,7 @@ public class Index {
 
     public static void eliminareditar() {
         listareditorial();
-        System.out.print("Ingrese el ID del Estudiante a Eliminar: ");
+        System.out.print("Ingrese el ID del editorial a Eliminar: ");
         int id = leer.entero();
         EditorialDAO a = new EditorialDAO();
         a.eliminareditorial(id);
@@ -118,7 +118,7 @@ public class Index {
 
     public static void eliminarlibro() {
         listarlibro();
-        System.out.print("Ingrese el ID del Estudiante a Eliminar: ");
+        System.out.print("Ingrese el ID del libro a Eliminar: ");
         int id = leer.entero();
         LibroDAO l = new LibroDAO();
         l.eliminarlibro(id);
@@ -134,19 +134,20 @@ public class Index {
 
     public static void eliminarusuario() {
         listarusuario();
-        System.out.print("Ingrese el ID del Estudiante a Eliminar: ");
+        System.out.print("Ingrese el ID del usuario a Eliminar: ");
         int id = leer.entero();
         UsuarioDAO u = new UsuarioDAO();
         u.eliminarusuario(id);
     }
 
+    
     public static void agregarautor() {
         String nombre;
         String apellido;
         System.out.println("Agregar ");
         System.out.println("nombre:");
         nombre = leer.cadena();
-        System.out.println("apellido");
+        System.out.println("apellido:");
         apellido = leer.cadena();
         Autor a = new Autor(nombre, apellido);
         AutorDAO q = new AutorDAO();
@@ -160,7 +161,7 @@ public class Index {
         String direccion;
         String url;
         String estado;
-        System.out.println("Agregar ");
+        System.out.println("Agregar  ");
         System.out.println("nombre:");
         nombre = leer.cadena();
         System.out.println("codigo:");
@@ -251,7 +252,7 @@ public class Index {
 
     public static void editarautor() {
         listarautor();
-        System.out.print("Ingrese el ID del Estudiante a Editar: ");
+        System.out.print("Ingrese el ID del autor a Editar: ");
         int id = leer.entero();  //construir un constructor
         String nombre;
         String apellido;
@@ -267,7 +268,7 @@ public class Index {
 
     public static void editareditar() {
         listareditorial();
-        System.out.print("Ingrese el ID del Estudiante a Editar: ");
+        System.out.print("Ingrese el ID del editorial a Editar: ");
         int id = leer.entero();  //construir un constructor
         String nombre;
         String codigo;
@@ -292,7 +293,7 @@ public class Index {
 
     public static void editarlibro() {
         listarlibro();
-        System.out.print("Ingrese el ID del Estudiante a Editar: ");
+        System.out.print("Ingrese el ID del libro a Editar: ");
         int id = leer.entero();  //construir un constructor
         String titulo;
         String isbn;
@@ -330,7 +331,7 @@ public class Index {
 
     public static void editarpais() {
         listarpais();
-        System.out.print("Ingrese el ID del Estudiante a Editar: ");
+        System.out.print("Ingrese el ID del pais a Editar: ");
         int id = leer.entero();  //construir un constructor
         String nombre;
         String estado;
@@ -347,7 +348,7 @@ public class Index {
 
     public static void editarusuario() {
         listarusuario();
-        System.out.print("Ingrese el ID del Estudiante a Editar: ");
+        System.out.print("Ingrese el ID del usuario a Editar: ");
         int id = leer.entero();  //construir un constructor
         String nombre;
         String apellido;
@@ -375,15 +376,18 @@ public class Index {
          System.out.println("ERORRRR NO HAY MAS OPCIONES");
     }
     public static void menuprincipal() {
-        System.out.println("MENU PRINCIPAL");
-        System.out.println("1.autor");
-        System.out.println("2.editorial");
-        System.out.println("3.libro");
-        System.out.println("4.pais");
-        System.out.println("5. usuario");
-        System.out.println("6. mostar los listados");
-                System.out.println("7. salir");
-                System.out.println("las opciones son[1-7]");
+        System.out.println("************************");
+        System.out.println("*MENU PRINCIPAL        *");
+        
+        System.out.println("*1.autor               *");
+        System.out.println("*2.editorial           *");
+        System.out.println("*3.libro               *");
+        System.out.println("*4.pais                *");
+        System.out.println("*5.usuario             *");
+        System.out.println("*6.mostar los listados *");
+        System.out.println("*7. salir              *");
+        System.out.println("*las opciones son[1-7] *");
+        System.out.println("************************");
     }
 
     public static void menuautor() {
@@ -402,7 +406,7 @@ public class Index {
         System.out.println("2.eliminar editorial");
         System.out.println("3.agregar editorial");
         System.out.println("4.editar editorial");
-        System.out.println("5. ");
+        System.out.println("5.volver al menu principal ");
 
     }
 
@@ -412,7 +416,7 @@ public class Index {
         System.out.println("2.eliminarautor");
         System.out.println("3.agregarautor");
         System.out.println("4.editarautor");
-        System.out.println("5. ");
+        System.out.println("5.volver al menu principal ");
 
     }
 
@@ -423,7 +427,7 @@ public class Index {
         System.out.println("2.eliminar pais");
         System.out.println("3.agregar pais");
         System.out.println("4.editar pais");
-        System.out.println("5. ");
+        System.out.println("5.volver al menu principal ");
 
     }
 
@@ -434,7 +438,7 @@ public class Index {
         System.out.println("2.eliminar usuario");
         System.out.println("3.agregar usuario");
         System.out.println("4.editar usuario");
-        System.out.println("5. ");
+        System.out.println("5.volver al menu principal ");
 
     }
 
@@ -461,7 +465,7 @@ public class Index {
                     editarautor();
                     break;
                 case 5:
-                    menuprincipal();
+                    
                     break;   
                 default:
                         ERROR();
@@ -497,15 +501,12 @@ public class Index {
                 case 5:
 
                     break;
-                case 6:
-
-                    break;
                 default:
-
+                    ERROR();
                     break;
             }
 
-        } while (opcion != 6);
+        } while (opcion != 5);
 
     }
 
@@ -535,15 +536,13 @@ public class Index {
                 case 5:
 
                     break;
-                case 6:
-
-                    break;
+                
                 default:
-
+                    ERROR();
                     break;
             }
 
-        } while (opcion != 6);
+        } while (opcion != 5);
 
     }
 
@@ -572,15 +571,13 @@ public class Index {
                 case 5:
 
                     break;
-                case 6:
-
-                    break;
+                
                 default:
-
+                    ERROR();
                     break;
             }
 
-        } while (opcion != 6);
+        } while (opcion != 5);
 
     }
 
@@ -607,17 +604,15 @@ public class Index {
                     editarusuario();
                     break;
                 case 5:
-
+                    
                     break;
-                case 6:
-
-                    break;
+                
                 default:
-
+                    ERROR();
                     break;
             }
 
-        } while (opcion != 6);
+        } while (opcion != 5);
 
     }
 
