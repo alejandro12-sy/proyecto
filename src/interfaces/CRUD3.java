@@ -14,6 +14,7 @@ import modelo.Libro;
  */
 public interface CRUD3 {
     public List listarlibro(); 
+     public List listarlibro2(); 
   public Libro buscarlibro(int idlibro);
   public boolean agregarlibro(Libro libro); 
   public boolean editarlibro(Libro libro);

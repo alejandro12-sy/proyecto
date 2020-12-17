@@ -180,5 +180,43 @@ String consulta=" delete from libro "+" where "+" idlibro = "+idlibro;
         }
         
         return  true;      }
+
+    @Override
+    public List listarlibro2() {
+ArrayList<Libro> autors=new ArrayList<>();
+         String consulta ="SELECT l.idlibro as idlibro,l.titulo as titulo,l.isbn as isbn,l.paginas as paginas, "
+                + "l.año as ano,l.stock as stock,l.stock_disponibles as stock_disp,a.nombre as autornombre ,"
+                 + "p.nombre pais_nombre ,e.nombre editorial_nombre FROM libro l, autor a ,pais p ,editorial e WHERE a.idautor=l.idlibro and a.idautor =p.idpais and a.idautor=e.ideditorial ORDER BY l.idlibro ";
+//          private String autornombre;
+//     private String pais_nombre;
+//     private String editorial_nombre;
+         try {
+           con=cn.getConnection();
+             pst=con.prepareStatement(consulta);
+             rs=pst.executeQuery(); 
+             while (rs.next()) {                 
+                 Libro a=new Libro();
+               a.setIdlibro(rs.getInt("idlibro"));
+               a.setTitulo(rs.getString("titulo"));
+               a.setIsbn(rs.getString("isbn"));
+               a.setPaginas(rs.getString("paginas"));
+               a.setAño(rs.getString("ano"));
+               a.setStock(rs.getString("stock"));
+               a.setStock_disponibles(rs.getString("stock_disp"));
+               a.setAutornombre(rs.getString("autornombre"));
+               a.setPais_nombre(rs.getString("pais_nombre"));
+               a.setEditorial_nombre(rs.getString("editorial_nombre"));
+               
+                 autors.add(a);
+             }
+             
+             
+             
+             
+        } catch (SQLException e) {
+             System.out.println("Error: problemas con el listar");
+              System.out.println(e.getMessage());
+        }
+         return autors;       }
     
 }

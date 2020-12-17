@@ -30,8 +30,8 @@ ConectaBd cn = new ConectaBd();
     @Override
     public List listarpais() {
 ArrayList<Pais> autors=new ArrayList<>();
-         String consulta =" select * from pais";
-         
+         String consulta =" select * from pais ";
+//         orden by nombre
          try {
            con=cn.getConnection();
              pst=con.prepareStatement(consulta);

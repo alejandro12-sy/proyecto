@@ -17,6 +17,9 @@ public class Libro {
      private String año;
      private String stock;
      private String stock_disponibles;
+     private String autornombre;
+     private String pais_nombre;
+     private String editorial_nombre;
      private int idautor;
      private int idpais;
      private int ideditorial;
@@ -36,6 +39,21 @@ public class Libro {
         this.idpais = idpais;
         this.ideditorial = ideditorial;
     }
+
+    public Libro( String titulo, String isbn, String paginas, String año, String stock, String stock_disponibles, String autornombre, String pais_nombre, String editorial_nombre) {
+        
+        this.titulo = titulo;
+        this.isbn = isbn;
+        this.paginas = paginas;
+        this.año = año;
+        this.stock = stock;
+        this.stock_disponibles = stock_disponibles;
+        this.autornombre = autornombre;
+        this.pais_nombre = pais_nombre;
+        this.editorial_nombre = editorial_nombre;
+    }
+    
+    
 
     public Libro(int idlibro, String titulo, String isbn, String paginas, String año, String stock, String stock_disponibles, int idautor, int idpais, int ideditorial) {
         this.idlibro = idlibro;
@@ -131,6 +149,30 @@ public class Libro {
 
     public void setIdeditorial(int ideditorial) {
         this.ideditorial = ideditorial;
+    }
+
+    public String getAutornombre() {
+        return autornombre;
+    }
+
+    public void setAutornombre(String autornombre) {
+        this.autornombre = autornombre;
+    }
+
+    public String getPais_nombre() {
+        return pais_nombre;
+    }
+
+    public void setPais_nombre(String pais_nombre) {
+        this.pais_nombre = pais_nombre;
+    }
+
+    public String getEditorial_nombre() {
+        return editorial_nombre;
+    }
+
+    public void setEditorial_nombre(String editorial_nombre) {
+        this.editorial_nombre = editorial_nombre;
     }
      
      

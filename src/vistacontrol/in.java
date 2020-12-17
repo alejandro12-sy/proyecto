@@ -24,7 +24,7 @@ import utils.leer;
  *
  * @author Alejandro
  */
-public class Index {
+public class in {
     
      public static void listarprestamo() {
          PrestamoDAO p=new PrestamoDAO();
@@ -177,17 +177,50 @@ public class Index {
         System.out.println("LISTANDO LA UNION DE TABLAS");
                      System.out.println("ID\tTitulo\t\t\t\tIsbn\t\tPaginas\t\tAño\tEstado\tStock\tStock_disponibles\tIdautor\tIdpais\tIdeditorial");
 
+        int ilongTitulo,ilongIsbn,ilongAutornombre,ilongPais_nombre,ilongEditorial_nombre;
+        int ilongTitulomayor = 0,ilongIsbnmayor=0,ilongAutornombremayor=0,ilongPais_nombremayor=0,ilongEditorial_nombremayor=0;
+        String slongTitulo,slongIsbn,slongAutornombre,slongPais_nombre,slongEditorial_nombre;           
+          
+        
+          
+        
+        
+        for (Libro o : i) {
+           
+                  slongTitulo=o.getTitulo(); //el valo de cada campo
+                  ilongTitulo = slongTitulo.length(); //obtener la long de cada campo
+                  if (ilongTitulo > ilongTitulomayor) { ilongTitulomayor = ilongTitulo;}
+                  
+                   slongIsbn= o.getIsbn();
+                   ilongIsbn= slongIsbn.length();
+                   if (ilongIsbn > ilongIsbnmayor) { ilongIsbnmayor = ilongIsbn;}
+                    
+                   slongAutornombre = o.getAutornombre();
+                   ilongAutornombre= slongAutornombre.length();
+                    if (ilongAutornombre > ilongAutornombremayor) { ilongAutornombremayor = ilongAutornombre;}
+                   
+                   slongPais_nombre = o.getPais_nombre();
+                   ilongPais_nombre = slongPais_nombre.length();
+                    if (ilongPais_nombre > ilongPais_nombremayor) { ilongPais_nombremayor = ilongPais_nombre;}
+                   
+                   slongEditorial_nombre = o.getEditorial_nombre();
+                   ilongEditorial_nombre = slongEditorial_nombre.length();
+                    if (ilongEditorial_nombre > ilongEditorial_nombremayor) { ilongEditorial_nombremayor = ilongEditorial_nombre;}
+                   
+        }             
+                     
+                     
         for (Libro o : i) {
             System.out.println(o.getIdlibro() + "\t"
-                    +darFormato3(o.getTitulo() , 1) 
-                    + darFormato3(o.getIsbn(), 2) + "\t"
+                    +darFormato3(o.getTitulo() , ilongTitulomayor) 
+                    + darFormato3(o.getIsbn(), ilongIsbnmayor) + "\t"
                     + o.getPaginas() + "\t"
                     + o.getAño() + "\t"
                     + o.getStock() + "\t"
                     + o.getStock_disponibles() + "\t"
-                    +darFormato3(o.getAutornombre(), 1) + "\t"
-                    + darFormato3(o.getPais_nombre(), 1) + "\t"
-                    +darFormato3( o.getEditorial_nombre(), 1)
+                    +darFormato3(o.getAutornombre(), ilongAutornombremayor) + "\t"
+                    + darFormato3(o.getPais_nombre(), ilongPais_nombremayor) + "\t"
+                    +darFormato3( o.getEditorial_nombre(), ilongEditorial_nombremayor)
             );
         }
 
@@ -212,6 +245,9 @@ public class Index {
         List<Usuario> s = u.listarusuario();
         System.out.println("Listado de Usuario");
         System.out.println("ID\tpais\t\t\tEstado\t\t\tApellido\t\tDni\t\tEstado");
+        
+        
+        
         
         for (Usuario o : s) {
             System.out.println(o.getIdusuario() + "\t"
@@ -286,13 +322,18 @@ public class Index {
           }
         return cadena;
           }
-     public static String darFormato3(String cadena, int campo){
-             int longitud;
-             
-        if ( campo == 1)  {  //getTitulo
+     public static String darFormato3(String cadena, int longitud){
+         int restadelong = longitud - cadena.length();
+       
+              cadena = cadena + " ".repeat(restadelong + 2);
+              return cadena;
+      /*  if ( campo == 1)  {  //getTitulo
             longitud = 30 -  cadena.length();
             cadena = cadena + " ".repeat(longitud);
        
+             
+              
+              
         }else if ( campo == 2)  {  //getAutornombre
               longitud = 20 -  cadena.length();
             cadena = cadena + " ".repeat(longitud);
@@ -303,8 +344,8 @@ public class Index {
               longitud = 18 -  cadena.length();
             cadena = cadena + " ".repeat(longitud);
               
-          }
-        return cadena;
+          }*/
+        
           }
     
     
